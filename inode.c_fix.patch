@@ -1,0 +1,24 @@
+diff --git a/fs/devpts/inode.c b/fs/devpts/inode.c
+index 8754c538c..e14514f54 100644
+--- a/fs/devpts/inode.c
++++ b/fs/devpts/inode.c
+@@ -616,9 +616,16 @@ void *devpts_get_priv(struct dentry *dentry)
+ #ifdef CONFIG_KSU_MANUAL_HOOK
+ 	ksu_handle_devpts(dentry->d_inode);
+ #endif
+-	if (dentry->d_sb->s_magic != DEVPTS_SUPER_MAGIC)
+-		return NULL;
+-	return dentry->d_fsdata;
++
++#if defined(CONFIG_KSU_SUSFS_SUS_SU)
++	if (likely(ksu_devpts_hook)) {
++		ksu_handle_devpts(dentry->d_inode);
++	}
++#endif
++
++ 	if (dentry->d_sb->s_magic != DEVPTS_SUPER_MAGIC)
++ 		return NULL;
++ 	return dentry->d_fsdata;
+ }
+ 
+ /**
