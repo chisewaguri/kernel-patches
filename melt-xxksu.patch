@@ -1,0 +1,18 @@
+diff --git a/kernel/Kconfig b/kernel/Kconfig
+index 95510682..38f40f41 100644
+--- a/kernel/Kconfig
++++ b/kernel/Kconfig
+@@ -7,6 +7,13 @@ config KSU
+ 	default y
+ 	help
+ 	  Enable kernel-level root privileges on Android System.
++	  
++config KSU_MANUAL_HOOK
++	bool "KernelSU manual hook support"
++	depends on KSU
++	default y
++	help
++	  Enable manual hook.
+ 
+ config KSU_DEBUG
+ 	bool "KernelSU debug mode"
