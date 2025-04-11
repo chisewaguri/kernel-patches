@@ -1,7 +1,7 @@
-diff --git a/kernel/Kconfig b/kernel/Kconfig
+diff --git a/drivers/kernelsu/Kconfig b/drivers/kernelsu/Kconfig
 index 95510682..38f40f41 100644
---- a/kernel/Kconfig
-+++ b/kernel/Kconfig
+--- a/drivers/kernelsu/Kconfig
++++ b/drivers/kernelsu/Kconfig
 @@ -7,6 +7,13 @@ config KSU
  	default y
  	help
